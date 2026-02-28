@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_015_LIB_BOOKS'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_015_LIB_BOOKS'
+  }
+}
+define service ZUI_Z015_LIB_BOOKS_O4 provider contracts odata_v4_ui {
+  expose ZC_015_LIB_BOOKS;
+}

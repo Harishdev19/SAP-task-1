@@ -1,0 +1,51 @@
+managed implementation in class ZBP_R_015_LIB_BOOKS unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_015_LIB_BOOKS alias Zr015LibBooks
+persistent table Z015_LIB_BOOKS
+extensible
+draft table Z015_LIB_BOOKS_D
+etag master LastChangedAt
+lock master total etag LocalLastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   BookUUID,
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( numbering : managed )
+   BookUUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for Z015_LIB_BOOKS corresponding extensible
+  {
+    BookUUID = BOOK_UUID;
+    Title = TITLE;
+    Author = AUTHOR;
+    Category = CATEGORY;
+    Status = STATUS;
+    BorrowerName = BORROWER_NAME;
+    BorrowDate = BORROW_DATE;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+}
